@@ -39,11 +39,11 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	dps = depth(second);
 
 	if (dpt < dps)
-		binary_trees_ancestor(first, second->parent);
-	else if (dpt > dps)
-		binary_trees_ancestor(first->parent, second);
-	else if (dpt == dps)
-		binary_trees_ancestor(first->parent, second->parent);
+		return (binary_trees_ancestor(first, second->parent));
+	if (dpt > dps)
+		return (binary_trees_ancestor(first->parent, second));
+	if (dpt == dps)
+		return (binary_trees_ancestor(first->parent, second->parent));
 
 	return (NULL);
 }
