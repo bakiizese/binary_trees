@@ -12,6 +12,8 @@ bst_t *bst_insert(bst_t **tree, int value)
 
 	if (tree == NULL)
 		return (NULL);
+	if (*tree == NULL)
+		return (*tree = binary_tree_node(NULL, value))
 	new = malloc(sizeof(bst_t));
 
 	if (new == NULL)
@@ -20,10 +22,6 @@ bst_t *bst_insert(bst_t **tree, int value)
 	new->left = NULL;
 	new->right = NULL;
 
-	if (*tree == NULL)
-	{
-		return (*tree = binary_tree_node(NULL, value));
-	}
 	if (new->n < (*tree)->n)
 	{
 		if ((*tree)->left == NULL)
