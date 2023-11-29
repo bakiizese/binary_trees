@@ -45,5 +45,5 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	else if (dpt == dps)
 		return (binary_trees_ancestor(first->parent, second->parent));
 
-	return (0);
+	return (NULL);
 }
