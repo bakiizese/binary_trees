@@ -13,7 +13,7 @@ bst_t *bst_insert(bst_t **tree, int value)
 	if (tree == NULL)
 		return (NULL);
 	if (*tree == NULL)
-		return (*tree = binary_tree_node(NULL, value))
+		return (*tree = binary_tree_node(NULL, value));
 	new = malloc(sizeof(bst_t));
 
 	if (new == NULL)
