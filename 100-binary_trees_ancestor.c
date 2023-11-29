@@ -31,12 +31,9 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	if (first == NULL || second == NULL)
 		return (NULL);
 
-	if ((first->n == second->n) || (first->parent == NULL &&
-				second->parent == NULL))
+	if (first->n == second->n)
 	{
-		binary_tree_t *new = (binary_tree_t *) first;
-
-		return (new);
+		return ((binary_tree_t *) first);
 	}
 	dpt = depth(first);
 	dps = depth(second);
