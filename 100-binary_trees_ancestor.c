@@ -28,6 +28,9 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	int dpt;
 	int dps;
 
+	if (first == NULL || second == NULL)
+		return (NULL);
+
 	if ((first->n == second->n) || (first->parent == NULL &&
 				second->parent == NULL))
 	{
