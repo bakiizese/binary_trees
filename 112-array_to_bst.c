@@ -1,17 +1,18 @@
 #include "binary_trees.h"
-
+/**
+ * array_to_bst - entry
+ * @array: pointer array
+ * @size: int
+ * Return: new
+ */
 bst_t *array_to_bst(int *array, size_t size)
 {
-	int i;
-	bst_t *new = malloc(sizeof(bst_t));
-	bst_t *p = malloc(sizeof(bst_t));
-
-	if (new == NULL)
-		return NULL;
+	unsigned long int i;
+	bst_t *new = NULL;
 
 	for (i = 0; i < size; i++)
 	{
-		p = bst_insert(new, array[i]);
+		bst_insert(&new, array[i]);
 	}
-	return p;
+	return (new);
 }
