@@ -1,25 +1,52 @@
 #include "binary_trees.h"
-#include <stdio.h>
-#include <queue.h>
+/**
+ * help - entry
+ * @tree: pointer
+ * @func: print func
+ * @level: level
+ */
+void help(const binary_tree_t *tree, void (*func)(int), size_t level)
+{
+	if (level == 1)
+		func(tree->n);
+	else
+	{
+		help(tree->left, func, level - 1);
+		help(tree->right, func, level - 1);
+	}
+}
+/**
+ * height - entyr
+ * @tree: pointer
+ * Return: height num
+ */
+int height(const binary_tree_t *tree)
+{
+	int hl = 0;
+	int hr = 0;
 
+	if (!tree)
+		return (0);
+
+	hl = tree->left ? 1 + height(tree->left) : 0;
+	hr = tree->right ? 1 + height(tree->right) : 0;
+	return (hl > hr ? hl : hr);
+}
+/**
+ * binary_tree_levelorder - enry
+ * @tree: pointer
+ * @func: print func
+ */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	    if (tree == NULL || func == NULL)
-		            return;
+	int level;
+	int maxl;
 
-	        queue<const binary_tree_t *> q;
-		    const binary_tree_t *node;
+	if (!tree || !func)
+		return;
 
-		        q.push(tree);
-			    while (!q.empty())
-				        {
-						        node = q.front();
-							        q.pop();
-								        func(node->n);
-									        if (node->left != NULL)
-											            q.push(node->left);
-										        if (node->right != NULL)
-												            q.push(node->right);
-											    }
+	maxl = height(tree) + 1;
+
+	for (level = 1; level <= maxl; level++)
+		help(tree, func, level);
 }
-
